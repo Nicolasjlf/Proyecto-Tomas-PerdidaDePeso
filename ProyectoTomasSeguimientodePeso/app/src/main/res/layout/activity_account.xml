@@ -12,7 +12,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/imagenusuario"
         android:layout_width="match_parent"
-        android:layout_height="260dp" />
+        android:layout_height="230dp" />
 
     <TextView
         android:layout_marginBottom="15dp"
@@ -25,7 +25,7 @@
         android:layout_marginBottom="15dp"
         android:id="@+id/activityAcount_nombreUser"
         android:textSize="30dp"
-        android:text="Nombre: "
+        android:text="Name: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -33,28 +33,27 @@
         android:layout_marginBottom="15dp"
         android:id="@+id/activityAcount_AlturaUser"
         android:textSize="30dp"
-        android:text="Altura: "
+        android:text="Height: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
         android:layout_marginBottom="15dp"
         android:id="@+id/activityAcount_pesoActualUser"
         android:textSize="30dp"
-        android:text="Peso: "
+        android:text="Weight: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
         android:layout_marginBottom="15dp"
         android:id="@+id/activityAcount_pesoObjetivoUser"
         android:textSize="30dp"
-        android:text="Peso Objetivo: "
+        android:text="objective Weigth: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
         android:background="@color/verde"
         android:text="Edit Objectives"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
