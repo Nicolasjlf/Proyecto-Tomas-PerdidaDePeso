@@ -1,55 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp"
+    android:paddingBottom="30dp"
+    android:weightSum="3"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_weight="1"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content"
+        android:layout_weight=".2"
+        android:gravity="center"
+        android:text="HOME"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.4">
 
         <Button
             android:id="@+id/mainActivity_myAcount"
-            android:text="My account"
-            android:background="@color/colorPrimary"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:drawableTop="@drawable/ic_account_circle_black_100dp"
+            android:paddingTop="30dp"
+            android:text="My account" />
+
         <Button
             android:id="@+id/mainActivity_histoy"
-            android:text="history"
-            android:background="@color/colorAccent"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/verde"
+            android:drawableTop="@drawable/ic_history_black_100dp"
+            android:paddingTop="30dp"
+            android:text="history" />
 
     </LinearLayout>
 
 
-
     <LinearLayout
 
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1.4">
 
         <Button
             android:id="@+id/mainActivity_myPics"
-            android:background="@color/dorado"
-            android:text="my pics"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/dorado"
+            android:drawableTop="@drawable/ic_photo_camera_black_100dp"
+            android:paddingTop="30dp"
+            android:text="my pics" />
+
         <Button
             android:id="@+id/mainActivity_settings"
-            android:text="settings"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:drawableTop="@drawable/ic_settings_black_100dp"
+            android:paddingTop="30dp"
+            android:text="settings" />
 
 
     </LinearLayout>
