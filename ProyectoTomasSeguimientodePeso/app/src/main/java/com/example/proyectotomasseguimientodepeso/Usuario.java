@@ -7,18 +7,20 @@ public class Usuario {
     private Integer peso;
     private Integer altura;
     private Integer pesoObjetivo;
+    private Integer pasosObjetivo;
     private Boolean enKilos;
 
     private Usuario(){
 
     }
 
-    public Usuario(String nombre, String mail, Integer peso, Integer altura, Integer pesoObjetivo, Boolean enKilos) {
+    public Usuario(String nombre, String mail, Integer peso, Integer altura, Integer pesoObjetivo, Integer pasosObjetivo, Boolean enKilos) {
         this.nombre = nombre;
         this.mail = mail;
         this.peso = peso;
         this.altura = altura;
         this.pesoObjetivo = pesoObjetivo;
+        this.pasosObjetivo = pasosObjetivo;
         this.enKilos = enKilos;
     }
 
@@ -60,6 +62,14 @@ public class Usuario {
 
     public void setPesoObjetivo(Integer pesoObjetivo) {
         this.pesoObjetivo = pesoObjetivo;
+    }
+
+    public Integer getPasosObjetivo() {
+        return pasosObjetivo;
+    }
+
+    public void setPasosObjetivo(Integer pasosObjetivo) {
+        this.pasosObjetivo = pasosObjetivo;
     }
 
     public Boolean getEnKilos() {
