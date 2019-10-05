@@ -1,80 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AccountActivity"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".AccountActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="MY ACCOUNT"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:layout_marginBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="85">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="85"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
                 android:layout_marginBottom="25dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/imagenusuario"
-                android:layout_width="match_parent"
-                android:layout_height="230dp" />
+                android:src="@drawable/imagenusuario" />
 
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_mailUser"
-                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Mail: "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="30dp" />
 
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_nombreUser"
-                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
                 android:text="Name: "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="30dp" />
 
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_AlturaUser"
-                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Height: "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="30dp" />
+
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_pesoActualUser"
-                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:text="Weight: "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="30dp" />
 
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_pesoObjetivoUser"
-                android:textSize="30dp"
-                android:text="Goal weight: "
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Goal weight: "
+                android:textSize="30dp" />
 
             <TextView
-                android:layout_marginBottom="15dp"
                 android:id="@+id/activityAcount_pasosObjetivoUser"
-                android:textSize="30dp"
-                android:text="Step goal: "
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="Step goal: "
+                android:textSize="30dp" />
 
         </LinearLayout>
+    </ScrollView>
 
     <Button
-        android:background="@color/verde"
-        android:text="Edit Goals"
+        android:id="@+id/activityAcount_EditInfo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"/>
+        android:layout_weight="15"
+        android:background="@color/verde"
+        android:text="Edit Information" />
 
 </LinearLayout>
