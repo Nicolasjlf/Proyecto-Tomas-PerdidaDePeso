@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     private void crearUsuario(String email, String password){
 
         mAuth.createUserWithEmailAndPassword(email, password)

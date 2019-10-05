@@ -24,19 +24,28 @@ public class SettingsActivity extends AppCompatActivity {
         sistemaIntenacionalTextView = findViewById(R.id.activitySettings_SistemaInternacional_TextView);
         sistemaImperialTextView = findViewById(R.id.activitySettings_SistemaImperial_TextView);
 
+        //TODO: Agarrar el booleano de si está en Sistema Internacional y hacer el setChecked() a la opción correspondiente del Switch
+
         seleccionSistemaMetricoSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    marcarSeleccion(sistemaImperialTextView);
-                    quitarSeleccion(sistemaIntenacionalTextView);
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    seleccionarSistemaImperial();
                 } else {
-                    marcarSeleccion(sistemaIntenacionalTextView);
-                    quitarSeleccion(sistemaImperialTextView);
+                    seleccionarSistemaInternacional();
                 }
             }
         });
+    }
 
+    private void seleccionarSistemaInternacional() {
+        marcarSeleccion(sistemaIntenacionalTextView);
+        quitarSeleccion(sistemaImperialTextView);
+    }
+
+    private void seleccionarSistemaImperial() {
+        marcarSeleccion(sistemaImperialTextView);
+        quitarSeleccion(sistemaIntenacionalTextView);
     }
 
     private void marcarSeleccion(TextView textViewSeleccionado) {
