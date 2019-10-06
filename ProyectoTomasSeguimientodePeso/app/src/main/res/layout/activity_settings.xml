@@ -201,7 +201,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:padding="15dp"
-                android:background="@color/verde" />
+                android:background="@color/colorAccent" />
 
         </LinearLayout>
 

@@ -5,26 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PhotosActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="MY PICS"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:layout_marginBottom="10dp"/>
 
     <ImageView
         android:id="@+id/activityPhotos_FotoSacada_ImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1.5"
+        android:src="@drawable/body_placeholder"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
+        android:layout_weight=".5"
+        android:gravity="center"
+        android:weightSum="3"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/activityPhotos_SacarFoto_Button"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:src="@drawable/ic_photo_camera_black_100dp"
-            android:padding="10dp"/>
+            android:background="@color/dorado"/>
 
     </LinearLayout>
 

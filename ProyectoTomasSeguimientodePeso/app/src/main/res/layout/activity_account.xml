@@ -34,7 +34,7 @@
                 android:src="@drawable/imagenusuario" />
 
             <TextView
-                android:id="@+id/activityAcount_mailUser"
+                android:id="@+id/activityAccount_mailUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -42,7 +42,7 @@
                 android:textSize="30dp" />
 
             <TextView
-                android:id="@+id/activityAcount_nombreUser"
+                android:id="@+id/activityAccount_nombreUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -50,7 +50,7 @@
                 android:textSize="30dp" />
 
             <TextView
-                android:id="@+id/activityAcount_AlturaUser"
+                android:id="@+id/activityAccount_AlturaUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -58,7 +58,7 @@
                 android:textSize="30dp" />
 
             <TextView
-                android:id="@+id/activityAcount_pesoActualUser"
+                android:id="@+id/activityAccount_pesoActualUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -66,7 +66,7 @@
                 android:textSize="30dp" />
 
             <TextView
-                android:id="@+id/activityAcount_pesoObjetivoUser"
+                android:id="@+id/activityAccount_pesoObjetivoUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -74,7 +74,7 @@
                 android:textSize="30dp" />
 
             <TextView
-                android:id="@+id/activityAcount_pasosObjetivoUser"
+                android:id="@+id/activityAccount_pasosObjetivoUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -85,11 +85,12 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/activityAcount_EditInfo"
+        android:id="@+id/activityAccount_EditInfo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="15"
-        android:background="@color/verde"
-        android:text="Edit Information" />
+        android:background="@color/colorPrimary"
+        android:text="Edit Information"
+        android:textSize="25dp"/>
 
 </LinearLayout>
