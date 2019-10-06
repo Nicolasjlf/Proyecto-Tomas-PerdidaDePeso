@@ -103,7 +103,8 @@
                     android:id="@+id/activitySettings_Name_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Insert your Username"/>
+                    android:hint="Insert your Username"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -124,7 +125,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="Insert your Height"/>
+                    android:hint="Insert your Height"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -145,7 +147,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="Insert your Weight"/>
+                    android:hint="Insert your Weight"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -166,7 +169,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="Insert your Goal Weight"/>
+                    android:hint="Insert your Goal Weight"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 
@@ -187,7 +191,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:hint="Insert your Step Goal"/>
+                    android:hint="Insert your Step Goal"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 

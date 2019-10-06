@@ -3,20 +3,18 @@ package com.example.proyectotomasseguimientodepeso;
 public class Usuario {
 
     private String nombre;
-    private String mail;
-    private Integer peso;
-    private Integer altura;
-    private Integer pesoObjetivo;
+    private Double altura;
+    private Double peso;
+    private Double pesoObjetivo;
     private Integer pasosObjetivo;
     private Boolean enKilos;
 
-    private Usuario(){
+    public Usuario(){
 
     }
 
-    public Usuario(String nombre, String mail, Integer peso, Integer altura, Integer pesoObjetivo, Integer pasosObjetivo, Boolean enKilos) {
+    public Usuario(String nombre, Double peso, Double altura, Double pesoObjetivo, Integer pasosObjetivo, Boolean enKilos) {
         this.nombre = nombre;
-        this.mail = mail;
         this.peso = peso;
         this.altura = altura;
         this.pesoObjetivo = pesoObjetivo;
@@ -32,35 +30,27 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public Integer getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(Integer peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 
-    public Integer getAltura() {
+    public Double getAltura() {
         return altura;
     }
 
-    public void setAltura(Integer altura) {
+    public void setAltura(Double altura) {
         this.altura = altura;
     }
 
-    public Integer getPesoObjetivo() {
+    public Double getPesoObjetivo() {
         return pesoObjetivo;
     }
 
-    public void setPesoObjetivo(Integer pesoObjetivo) {
+    public void setPesoObjetivo(Double pesoObjetivo) {
         this.pesoObjetivo = pesoObjetivo;
     }
 
