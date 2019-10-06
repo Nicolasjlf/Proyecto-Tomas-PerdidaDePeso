@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+
 public class PhotosActivity extends AppCompatActivity {
 
     private ImageView fotoSacada;
@@ -26,6 +27,7 @@ public class PhotosActivity extends AppCompatActivity {
         botonSacarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //tira un intent al perisferico que abre la camara
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE_SECURE);
                 startActivityForResult(cameraIntent, 0);
             }
@@ -33,6 +35,7 @@ public class PhotosActivity extends AppCompatActivity {
 
     }
 
+    //agarra la informasion que vuelve del intent y los carga en el image view
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
         Bitmap image = (Bitmap) data.getExtras().get("data");

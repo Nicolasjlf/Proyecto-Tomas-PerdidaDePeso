@@ -1,5 +1,7 @@
 package com.example.proyectotomasseguimientodepeso;
 
+
+//esta es la clase usuario
 public class Usuario {
 
     private String nombre;
