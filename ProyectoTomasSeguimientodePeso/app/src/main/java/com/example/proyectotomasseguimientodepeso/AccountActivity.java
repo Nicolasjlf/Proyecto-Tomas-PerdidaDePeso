@@ -110,4 +110,10 @@ public class AccountActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(AccountActivity.this,MainActivity.class));
+    }
 }
