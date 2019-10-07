@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         botonSettings= findViewById(R.id.mainActivity_settings);
         botonMyPics= findViewById(R.id.mainActivity_myPics);
 
+        //cada boton tira un intent a las diferentes activities de la aplicacion
+
         botonMyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

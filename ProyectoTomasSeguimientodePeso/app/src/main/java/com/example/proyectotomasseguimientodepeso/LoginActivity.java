@@ -18,12 +18,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    //cada actividad va tenes como atributo los componentes visuales
     private Button botonLogin;
     private Button botonRegister;
 
     private EditText editTextEmail;
     private EditText editTextpass;
 
+    //el firebase auth es basicamente el componente que maneja el login de firebase
     private FirebaseAuth mAuth;
 
 
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //encuentra todos los componentes visiuales de la pantalla usando el find view by id
         botonLogin = findViewById(R.id.activityLogin_buttonLogin);
         botonRegister = findViewById(R.id.activityLogin_buttonRegister);
         editTextEmail = findViewById(R.id.activityLogin_username);
@@ -43,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         botonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //encuenta los valores del edit text y los manda al metodo crear usuario
                 String email = editTextEmail.getText().toString();
                 String password = editTextpass.getText().toString();
                 crearUsuario(email,password);
@@ -63,16 +68,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private void crearUsuario(String email, String password){
 
+        //metodo de firebase para crear usuario
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
 
+                            //lo que se ejecuta si el metodo es exitoso
                             FirebaseUser user = mAuth.getCurrentUser();
 
                         } else {
+                            //lo que se ejecuta si el metodo falla
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -85,6 +92,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loguearUsuario(String email,String password){
+
+        //metodo de firebase para crear usuario
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -92,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            //si el logueo es exitoso te manda a la main activity
                             irAMain();
 
                         } else {
@@ -108,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void irAMain(){
+        //intent para ir al main
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
