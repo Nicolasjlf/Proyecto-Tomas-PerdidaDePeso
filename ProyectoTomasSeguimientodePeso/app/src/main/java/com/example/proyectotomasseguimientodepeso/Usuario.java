@@ -11,7 +11,7 @@ public class Usuario {
     private Integer pasosObjetivo;
     private Boolean enKilos;
 
-    private Usuario(){
+    public Usuario(){
 
     }
 

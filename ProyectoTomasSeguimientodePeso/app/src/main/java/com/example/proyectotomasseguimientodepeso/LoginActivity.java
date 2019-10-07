@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -77,6 +78,14 @@ public class LoginActivity extends AppCompatActivity {
 
                             //lo que se ejecuta si el metodo es exitoso
                             FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                            Usuario usuario = new Usuario();
+                            usuario.setEnKilos(true);
+                            usuario.setAltura(0.0);
+                            usuario.setNombre("");
+                            usuario.setPasosObjetivo(0);
+                            usuario.setPeso(0.0);
+                            firebaseDatabase.getReference().child(user.getUid()).setValue(usuario);
 
                         } else {
                             //lo que se ejecuta si el metodo falla

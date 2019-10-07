@@ -63,24 +63,28 @@ public class SettingsActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference = firebaseDatabase.getReference(uid);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                usuario = dataSnapshot.getValue(Usuario.class);
+                try {
+                    usuario = dataSnapshot.getValue(Usuario.class);
 
-                if (usuario.getEnKilos() == null || usuario.getEnKilos() == true) {
-                    seleccionSistemaMetricoSwitch.setChecked(false);
-                    seleccionarSistemaInternacional();
-                } else {
-                    seleccionSistemaMetricoSwitch.setChecked(true);
-                    seleccionarSistemaImperial();
+                    if (usuario.getEnKilos() == null || usuario.getEnKilos() == true) {
+                        seleccionSistemaMetricoSwitch.setChecked(false);
+                        seleccionarSistemaInternacional();
+                    } else {
+                        seleccionSistemaMetricoSwitch.setChecked(true);
+                        seleccionarSistemaImperial();
+                    }
+
+                    nombreEditText.setText(usuario.getNombre());
+                    alturaEditText.setText(usuario.getAltura().toString());
+                    pesoEditText.setText(usuario.getPeso().toString());
+                    pesoObjetivoEditText.setText(usuario.getPesoObjetivo().toString());
+                    pasosObjetivoEditText.setText(usuario.getPasosObjetivo().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                nombreEditText.setText(usuario.getNombre());
-                alturaEditText.setText(usuario.getAltura().toString());
-                pesoEditText.setText(usuario.getPeso().toString());
-                pesoObjetivoEditText.setText(usuario.getPesoObjetivo().toString());
-                pasosObjetivoEditText.setText(usuario.getPasosObjetivo().toString());
             }
 
             @Override

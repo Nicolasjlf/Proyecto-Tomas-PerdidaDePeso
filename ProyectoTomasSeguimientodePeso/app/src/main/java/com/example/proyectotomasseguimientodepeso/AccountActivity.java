@@ -64,26 +64,30 @@ public class AccountActivity extends AppCompatActivity {
 
                 Usuario value = dataSnapshot.getValue(Usuario.class);
 
-                if (value.getEnKilos()){
-                    unidadPeso = " [kg]";
-                    unidadLongitud = " [m]";
-                } else {
-                    unidadPeso = " [lb]";
-                    unidadLongitud = " [ft]";
-                }
+                try {
+                    if (value.getEnKilos()){
+                        unidadPeso = " [kg]";
+                        unidadLongitud = " [m]";
+                    } else {
+                        unidadPeso = " [lb]";
+                        unidadLongitud = " [ft]";
+                    }
 
-                CharSequence mail = textViewMailUser.getText();
-                textViewMailUser.setText(mail + currentUser.getEmail());
-                CharSequence name = textViewNameUser.getText();
-                textViewNameUser.setText(name + value.getNombre());
-                CharSequence height = textViewHeightUser.getText();
-                textViewHeightUser.setText(height + value.getAltura().toString() + unidadLongitud);
-                CharSequence weight = textViewWeightUser.getText();
-                textViewWeightUser.setText(weight + value.getPeso().toString() + unidadPeso);
-                CharSequence goalWeight = textViewGoalWeightUser.getText();
-                textViewGoalWeightUser.setText(goalWeight + value.getPesoObjetivo().toString() + unidadPeso);
-                CharSequence stepsGoal = textViewStepsGoalUser.getText();
-                textViewStepsGoalUser.setText(stepsGoal + value.getPasosObjetivo().toString());
+                    CharSequence mail = textViewMailUser.getText();
+                    textViewMailUser.setText(mail + currentUser.getEmail());
+                    CharSequence name = textViewNameUser.getText();
+                    textViewNameUser.setText(name + value.getNombre());
+                    CharSequence height = textViewHeightUser.getText();
+                    textViewHeightUser.setText(height + value.getAltura().toString() + unidadLongitud);
+                    CharSequence weight = textViewWeightUser.getText();
+                    textViewWeightUser.setText(weight + value.getPeso().toString() + unidadPeso);
+                    CharSequence goalWeight = textViewGoalWeightUser.getText();
+                    textViewGoalWeightUser.setText(goalWeight + value.getPesoObjetivo().toString() + unidadPeso);
+                    CharSequence stepsGoal = textViewStepsGoalUser.getText();
+                    textViewStepsGoalUser.setText(stepsGoal + value.getPasosObjetivo().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
