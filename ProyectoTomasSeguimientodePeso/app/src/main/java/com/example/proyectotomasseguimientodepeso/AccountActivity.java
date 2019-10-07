@@ -63,9 +63,20 @@ public class AccountActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Usuario value = dataSnapshot.getValue(Usuario.class);
+                String valueNombre = value.getNombre();
+                Double valueAltura = value.getAltura();
+                Double valuePeso = value.getPeso();
+                Double valuePesoObjetivo = value.getPesoObjetivo();
+                Integer valuePasosObjetivo = value.getPasosObjetivo();
 
-                try {
-                    if (value.getEnKilos()){
+                textViewMailUser.setText("Mail: " + currentUser.getEmail());
+
+                if (value == null) {
+                    unidadPeso = " [kg]";
+                    unidadLongitud = " [m]";
+                } else {
+
+                    if (value.getEnKilos()) {
                         unidadPeso = " [kg]";
                         unidadLongitud = " [m]";
                     } else {
@@ -73,21 +84,23 @@ public class AccountActivity extends AppCompatActivity {
                         unidadLongitud = " [ft]";
                     }
 
-                    CharSequence mail = textViewMailUser.getText();
-                    textViewMailUser.setText("Mail: " + currentUser.getEmail());
-                    CharSequence name = textViewNameUser.getText();
-                    textViewNameUser.setText("Name: " + value.getNombre());
-                    CharSequence height = textViewHeightUser.getText();
-                    textViewHeightUser.setText("Height: " + value.getAltura().toString() + unidadLongitud);
-                    CharSequence weight = textViewWeightUser.getText();
-                    textViewWeightUser.setText("Weight: " + value.getPeso().toString() + unidadPeso);
-                    CharSequence goalWeight = textViewGoalWeightUser.getText();
-                    textViewGoalWeightUser.setText("Weight goal: " + value.getPesoObjetivo().toString() + unidadPeso);
-                    CharSequence stepsGoal = textViewStepsGoalUser.getText();
-                    textViewStepsGoalUser.setText("Step Goal: " + value.getPasosObjetivo().toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    if (valueNombre != null) {
+                        textViewNameUser.setText("Name: " + valueNombre);
+                    }
+                    if (valueAltura != null) {
+                        textViewHeightUser.setText("Height: " + valueAltura + unidadLongitud);
+                    }
+                    if (valuePeso != null) {
+                        textViewWeightUser.setText("Weight: " + valuePeso + unidadPeso);
+                    }
+                    if (valuePesoObjetivo != null) {
+                        textViewGoalWeightUser.setText("Weight goal: " + valuePesoObjetivo + unidadPeso);
+                    }
+                    if (valuePasosObjetivo != null) {
+                        textViewStepsGoalUser.setText("Step Goal: " + valuePasosObjetivo);
+                    }
                 }
+
             }
 
             @Override

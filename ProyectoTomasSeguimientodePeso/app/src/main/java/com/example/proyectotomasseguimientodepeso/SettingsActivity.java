@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView unidadPesoTextView;
     private TextView unidadLongitudTextView1;
     private TextView unidadLongitudTextView2;
+    private Boolean sistemaInternacional;
 
     private Usuario usuario;
 
@@ -66,8 +67,19 @@ public class SettingsActivity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try {
-                    usuario = dataSnapshot.getValue(Usuario.class);
+
+                usuario = dataSnapshot.getValue(Usuario.class);
+                String usuarioNombre = usuario.getNombre();
+                Double usuarioAltura = usuario.getAltura();
+                Double usuarioPeso = usuario.getPeso();
+                Double usuarioPesoObjetivo = usuario.getPesoObjetivo();
+                Integer usuarioPasosObjetivo = usuario.getPasosObjetivo();
+
+                if (usuario == null) {
+                    seleccionSistemaMetricoSwitch.setChecked(false);
+                    seleccionarSistemaInternacional();
+                    usuario = new Usuario();
+                } else {
 
                     if (usuario.getEnKilos() == null || usuario.getEnKilos() == true) {
                         seleccionSistemaMetricoSwitch.setChecked(false);
@@ -77,14 +89,24 @@ public class SettingsActivity extends AppCompatActivity {
                         seleccionarSistemaImperial();
                     }
 
-                    nombreEditText.setText(usuario.getNombre());
-                    alturaEditText.setText(usuario.getAltura().toString());
-                    pesoEditText.setText(usuario.getPeso().toString());
-                    pesoObjetivoEditText.setText(usuario.getPesoObjetivo().toString());
-                    pasosObjetivoEditText.setText(usuario.getPasosObjetivo().toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    if (usuarioNombre != null) {
+                        nombreEditText.setText(usuarioNombre);
+                    }
+                    if (usuarioAltura != null) {
+                        alturaEditText.setText(usuarioAltura.toString());
+                    }
+                    if (usuarioPeso != null) {
+                        pesoEditText.setText(usuarioPeso.toString());
+                    }
+                    if (usuarioPesoObjetivo != null) {
+                        pesoObjetivoEditText.setText(usuarioPesoObjetivo.toString());
+                    }
+                    if (usuarioPasosObjetivo != null) {
+                        pasosObjetivoEditText.setText(usuarioPasosObjetivo.toString());
+                    }
+
                 }
+
             }
 
             @Override
@@ -101,8 +123,6 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     seleccionarSistemaInternacional();
                 }
-
-                usuario.setEnKilos(!isChecked);
             }
         });
 
@@ -119,20 +139,33 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setUsuarioFirebase(DatabaseReference databaseReference) {
         String nombreUsuario = nombreEditText.getText().toString();
-        usuario.setNombre(nombreUsuario);
-        String alturaUsuario = alturaEditText.getText().toString();
-        usuario.setAltura(Double.parseDouble(alturaUsuario));
-        String pesoUsuario = pesoEditText.getText().toString();
-        usuario.setPeso(Double.parseDouble(pesoUsuario));
-        String pesoObjetivoUsuario = pesoObjetivoEditText.getText().toString();
-        usuario.setPesoObjetivo(Double.parseDouble(pesoObjetivoUsuario));
-        String pasosObjetivoUsuario = pasosObjetivoEditText.getText().toString();
-        usuario.setPasosObjetivo(Integer.parseInt(pasosObjetivoUsuario));
+        this.usuario.setNombre(nombreUsuario);
+        if (!alturaEditText.getText().toString().equals("")) {
+            String alturaUsuario = alturaEditText.getText().toString();
+            this.usuario.setAltura(Double.parseDouble(alturaUsuario));
+        }
+        if (!pesoEditText.getText().toString().equals("")) {
+            String pesoUsuario = pesoEditText.getText().toString();
+            this.usuario.setPeso(Double.parseDouble(pesoUsuario));
+        }
+        if (!pesoObjetivoEditText.getText().toString().equals("")) {
+            String pesoObjetivoUsuario = pesoObjetivoEditText.getText().toString();
+            this.usuario.setPesoObjetivo(Double.parseDouble(pesoObjetivoUsuario));
+        }
+        if (!pasosObjetivoEditText.getText().toString().equals("")) {
+            String pasosObjetivoUsuario = pasosObjetivoEditText.getText().toString();
+            this.usuario.setPasosObjetivo(Integer.parseInt(pasosObjetivoUsuario));
+        }
 
-        databaseReference.setValue(usuario);
+        this.usuario.setEnKilos(sistemaInternacional);
+
+        databaseReference.setValue(this.usuario);
     }
 
     private void seleccionarSistemaInternacional() {
+
+        sistemaInternacional = true;
+
         marcarSeleccion(sistemaIntenacionalTextView);
         quitarSeleccion(sistemaImperialTextView);
 
@@ -141,22 +174,25 @@ public class SettingsActivity extends AppCompatActivity {
         unidadLongitudTextView2.setText("[kg]");
 
         String alturaEnMetros = alturaEditText.getText().toString();
-        if(!alturaEnMetros.equals("")){
+        if (!alturaEnMetros.equals("")) {
             alturaEditText.setText(convertirAPies(alturaEnMetros));
         }
 
         String pesoEnKilos = pesoEditText.getText().toString();
-        if(!pesoEnKilos.equals("")){
+        if (!pesoEnKilos.equals("")) {
             pesoEditText.setText(convertirALibras(pesoEnKilos));
         }
 
         String pesoObjetivoEnKilos = pesoObjetivoEditText.getText().toString();
-        if(!pesoObjetivoEnKilos.equals("")){
+        if (!pesoObjetivoEnKilos.equals("")) {
             pesoObjetivoEditText.setText(convertirALibras(pesoObjetivoEnKilos));
         }
     }
 
     private void seleccionarSistemaImperial() {
+
+        sistemaInternacional = false;
+
         marcarSeleccion(sistemaImperialTextView);
         quitarSeleccion(sistemaIntenacionalTextView);
 
@@ -165,17 +201,17 @@ public class SettingsActivity extends AppCompatActivity {
         unidadLongitudTextView2.setText("[lb]");
 
         String alturaEnPies = alturaEditText.getText().toString();
-        if(!alturaEnPies.equals("")){
+        if (!alturaEnPies.equals("")) {
             alturaEditText.setText(convertirAMetros(alturaEnPies));
         }
 
         String pesoEnLibras = pesoEditText.getText().toString();
-        if(!pesoEnLibras.equals("")){
+        if (!pesoEnLibras.equals("")) {
             pesoEditText.setText(convertirAKilos(pesoEnLibras));
         }
 
         String pesoObjetivoEnLibras = pesoObjetivoEditText.getText().toString();
-        if(!pesoObjetivoEnLibras.equals("")){
+        if (!pesoObjetivoEnLibras.equals("")) {
             pesoObjetivoEditText.setText(convertirAKilos(pesoObjetivoEnLibras));
         }
     }
@@ -192,24 +228,24 @@ public class SettingsActivity extends AppCompatActivity {
         textViewSeleccionado.setTypeface(Typeface.DEFAULT);
     }
 
-    private String convertirAPies(String metros){
-        Double pies =  Double.parseDouble(metros) * 3.281;
-        return String.format("%.2f",pies);
+    private String convertirAPies(String metros) {
+        Double pies = Double.parseDouble(metros) * 3.281;
+        return String.format("%.2f", pies);
     }
 
-    private String convertirAMetros(String pies){
-        Double metros =  Double.parseDouble(pies) / 3.281;
-        return String.format("%.2f",metros);
+    private String convertirAMetros(String pies) {
+        Double metros = Double.parseDouble(pies) / 3.281;
+        return String.format("%.2f", metros);
     }
 
-    private String convertirALibras(String kilos){
-        Double libras =  Double.parseDouble(kilos) * 2.205;
-        return String.format("%.2f",libras);
+    private String convertirALibras(String kilos) {
+        Double libras = Double.parseDouble(kilos) * 2.205;
+        return String.format("%.2f", libras);
     }
 
-    private String convertirAKilos(String libras){
-        Double kilos =  Double.parseDouble(libras) / 2.205;
-        return String.format("%.2f",kilos);
+    private String convertirAKilos(String libras) {
+        Double kilos = Double.parseDouble(libras) / 2.205;
+        return String.format("%.2f", kilos);
 
     }
 }
