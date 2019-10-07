@@ -21,27 +21,17 @@
         android:id="@+id/activityPhotos_FotoSacada_ImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="85"
         android:src="@drawable/body_placeholder"
         android:scaleType="centerCrop"
         android:layout_marginBottom="10dp"/>
 
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/activityPhotos_SacarFoto_Button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".5"
-        android:gravity="center"
-        android:weightSum="3"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/activityPhotos_SacarFoto_Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:src="@drawable/ic_photo_camera_black_100dp"
-            android:background="@color/dorado"/>
-
-    </LinearLayout>
+        android:layout_weight="15"
+        android:background="@color/dorado"
+        android:src="@drawable/ic_photo_camera_black_75dp"/>
 
 </LinearLayout>

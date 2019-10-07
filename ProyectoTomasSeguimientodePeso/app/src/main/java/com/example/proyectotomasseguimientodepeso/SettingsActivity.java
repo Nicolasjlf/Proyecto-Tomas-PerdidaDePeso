@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -16,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +35,9 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText pesoEditText;
     private EditText pesoObjetivoEditText;
     private EditText pasosObjetivoEditText;
+    private TextView unidadPesoTextView;
+    private TextView unidadLongitudTextView1;
+    private TextView unidadLongitudTextView2;
 
     private Usuario usuario;
 
@@ -52,6 +55,9 @@ public class SettingsActivity extends AppCompatActivity {
         pesoObjetivoEditText = findViewById(R.id.activitySettings_GoalWeight_EditText);
         pasosObjetivoEditText = findViewById(R.id.activitySettings_StepGoal_EditText);
         confirmChangesButton = findViewById(R.id.activitySettings_Confirmar_Button);
+        unidadPesoTextView = findViewById(R.id.activitySettings_UnidadPeso_TextView);
+        unidadLongitudTextView1 = findViewById(R.id.activitySettings_UnidadLongitud1_TextView);
+        unidadLongitudTextView2 = findViewById(R.id.activitySettings_UnidadLongitud2_TextView);
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -125,11 +131,49 @@ public class SettingsActivity extends AppCompatActivity {
     private void seleccionarSistemaInternacional() {
         marcarSeleccion(sistemaIntenacionalTextView);
         quitarSeleccion(sistemaImperialTextView);
+
+        unidadPesoTextView.setText("[m]");
+        unidadLongitudTextView1.setText("[kg]");
+        unidadLongitudTextView2.setText("[kg]");
+
+        String alturaEnMetros = alturaEditText.getText().toString();
+        if(!alturaEnMetros.equals("")){
+            alturaEditText.setText(convertirAPies(alturaEnMetros));
+        }
+
+        String pesoEnKilos = pesoEditText.getText().toString();
+        if(!pesoEnKilos.equals("")){
+            pesoEditText.setText(convertirALibras(pesoEnKilos));
+        }
+
+        String pesoObjetivoEnKilos = pesoObjetivoEditText.getText().toString();
+        if(!pesoObjetivoEnKilos.equals("")){
+            pesoObjetivoEditText.setText(convertirALibras(pesoObjetivoEnKilos));
+        }
     }
 
     private void seleccionarSistemaImperial() {
         marcarSeleccion(sistemaImperialTextView);
         quitarSeleccion(sistemaIntenacionalTextView);
+
+        unidadPesoTextView.setText("[ft]");
+        unidadLongitudTextView1.setText("[lb]");
+        unidadLongitudTextView2.setText("[lb]");
+
+        String alturaEnPies = alturaEditText.getText().toString();
+        if(!alturaEnPies.equals("")){
+            alturaEditText.setText(convertirAMetros(alturaEnPies));
+        }
+
+        String pesoEnLibras = pesoEditText.getText().toString();
+        if(!pesoEnLibras.equals("")){
+            pesoEditText.setText(convertirAKilos(pesoEnLibras));
+        }
+
+        String pesoObjetivoEnLibras = pesoObjetivoEditText.getText().toString();
+        if(!pesoObjetivoEnLibras.equals("")){
+            pesoObjetivoEditText.setText(convertirAKilos(pesoObjetivoEnLibras));
+        }
     }
 
     private void marcarSeleccion(TextView textViewSeleccionado) {
@@ -142,5 +186,26 @@ public class SettingsActivity extends AppCompatActivity {
         textViewSeleccionado.setBackgroundColor(Color.TRANSPARENT);
         textViewSeleccionado.setTextColor(Color.GRAY);
         textViewSeleccionado.setTypeface(Typeface.DEFAULT);
+    }
+
+    private String convertirAPies(String metros){
+        Double pies =  Double.parseDouble(metros) * 3.281;
+        return String.format("%.2f",pies);
+    }
+
+    private String convertirAMetros(String pies){
+        Double metros =  Double.parseDouble(pies) / 3.281;
+        return String.format("%.2f",metros);
+    }
+
+    private String convertirALibras(String kilos){
+        Double libras =  Double.parseDouble(kilos) * 2.205;
+        return String.format("%.2f",libras);
+    }
+
+    private String convertirAKilos(String libras){
+        Double kilos =  Double.parseDouble(libras) / 2.205;
+        return String.format("%.2f",kilos);
+
     }
 }

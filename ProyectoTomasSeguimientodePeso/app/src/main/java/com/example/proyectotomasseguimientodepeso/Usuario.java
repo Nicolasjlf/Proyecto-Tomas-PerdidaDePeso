@@ -9,7 +9,7 @@ public class Usuario {
     private Integer pasosObjetivo;
     private Boolean enKilos;
 
-    public Usuario(){
+    private Usuario(){
 
     }
 

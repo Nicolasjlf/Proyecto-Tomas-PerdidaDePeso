@@ -29,6 +29,9 @@ public class AccountActivity extends AppCompatActivity {
 
     private FirebaseDatabase firebaseDatabase;
 
+    private String unidadPeso;
+    private String unidadLongitud;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +64,24 @@ public class AccountActivity extends AppCompatActivity {
 
                 Usuario value = dataSnapshot.getValue(Usuario.class);
 
+                if (value.getEnKilos()){
+                    unidadPeso = " [kg]";
+                    unidadLongitud = " [m]";
+                } else {
+                    unidadPeso = " [lb]";
+                    unidadLongitud = " [ft]";
+                }
+
                 CharSequence mail = textViewMailUser.getText();
                 textViewMailUser.setText(mail + currentUser.getEmail());
                 CharSequence name = textViewNameUser.getText();
                 textViewNameUser.setText(name + value.getNombre());
                 CharSequence height = textViewHeightUser.getText();
-                textViewHeightUser.setText(height + value.getAltura().toString());
+                textViewHeightUser.setText(height + value.getAltura().toString() + unidadLongitud);
                 CharSequence weight = textViewWeightUser.getText();
-                textViewWeightUser.setText(weight + value.getPeso().toString());
+                textViewWeightUser.setText(weight + value.getPeso().toString() + unidadPeso);
                 CharSequence goalWeight = textViewGoalWeightUser.getText();
-                textViewGoalWeightUser.setText(goalWeight + value.getPesoObjetivo().toString());
+                textViewGoalWeightUser.setText(goalWeight + value.getPesoObjetivo().toString() + unidadPeso);
                 CharSequence stepsGoal = textViewStepsGoalUser.getText();
                 textViewStepsGoalUser.setText(stepsGoal + value.getPasosObjetivo().toString());
             }

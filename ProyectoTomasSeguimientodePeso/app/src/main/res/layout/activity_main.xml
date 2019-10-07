@@ -33,7 +33,8 @@
             android:background="@color/colorPrimary"
             android:drawableTop="@drawable/ic_account_circle_black_100dp"
             android:paddingTop="30dp"
-            android:text="My account" />
+            android:text="My account"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/mainActivity_histoy"
@@ -44,7 +45,8 @@
             android:background="@color/verde"
             android:drawableTop="@drawable/ic_history_black_100dp"
             android:paddingTop="30dp"
-            android:text="history" />
+            android:text="history"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -64,7 +66,8 @@
             android:background="@color/dorado"
             android:drawableTop="@drawable/ic_photo_camera_black_100dp"
             android:paddingTop="30dp"
-            android:text="my pics" />
+            android:text="my pics"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/mainActivity_settings"
@@ -75,7 +78,8 @@
             android:background="@color/colorAccent"
             android:drawableTop="@drawable/ic_settings_black_100dp"
             android:paddingTop="30dp"
-            android:text="settings" />
+            android:text="settings"
+            android:textStyle="bold"/>
 
 
     </LinearLayout>

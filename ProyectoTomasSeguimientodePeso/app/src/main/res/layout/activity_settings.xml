@@ -25,7 +25,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="85">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,11 +123,22 @@
 
                 <EditText
                     android:id="@+id/activitySettings_Height_EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:inputType="numberDecimal"
                     android:hint="Insert your Height"
                     android:singleLine="true"/>
+
+                <TextView
+                    android:id="@+id/activitySettings_UnidadPeso_TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="[m]"
+                    android:textSize="20dp"
+                    android:layout_gravity="right"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -144,11 +156,22 @@
 
                 <EditText
                     android:id="@+id/activitySettings_Weight_EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:inputType="numberDecimal"
                     android:hint="Insert your Weight"
                     android:singleLine="true"/>
+
+                <TextView
+                    android:id="@+id/activitySettings_UnidadLongitud1_TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="[kg]"
+                    android:textSize="20dp"
+                    android:layout_gravity="right"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -166,11 +189,22 @@
 
                 <EditText
                     android:id="@+id/activitySettings_GoalWeight_EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="6"
                     android:inputType="numberDecimal"
                     android:hint="Insert your Goal Weight"
                     android:singleLine="true"/>
+
+                <TextView
+                    android:id="@+id/activitySettings_UnidadLongitud2_TextView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="[kg]"
+                    android:textSize="20dp"
+                    android:layout_gravity="right"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -196,20 +230,17 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/activitySettings_Confirmar_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Confirm changes"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:padding="15dp"
-                android:background="@color/colorAccent" />
-
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/activitySettings_Confirmar_Button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:background="@color/colorAccent"
+        android:text="Confirm changes"
+        android:textSize="25dp"/>
 
 </LinearLayout>
