@@ -74,17 +74,17 @@ public class AccountActivity extends AppCompatActivity {
                     }
 
                     CharSequence mail = textViewMailUser.getText();
-                    textViewMailUser.setText(mail + currentUser.getEmail());
+                    textViewMailUser.setText("Mail:" + currentUser.getEmail());
                     CharSequence name = textViewNameUser.getText();
-                    textViewNameUser.setText(name + value.getNombre());
+                    textViewNameUser.setText("Name" + value.getNombre());
                     CharSequence height = textViewHeightUser.getText();
-                    textViewHeightUser.setText(height + value.getAltura().toString() + unidadLongitud);
+                    textViewHeightUser.setText("Height:" + value.getAltura().toString() + unidadLongitud);
                     CharSequence weight = textViewWeightUser.getText();
-                    textViewWeightUser.setText(weight + value.getPeso().toString() + unidadPeso);
+                    textViewWeightUser.setText("Weight" + value.getPeso().toString() + unidadPeso);
                     CharSequence goalWeight = textViewGoalWeightUser.getText();
-                    textViewGoalWeightUser.setText(goalWeight + value.getPesoObjetivo().toString() + unidadPeso);
+                    textViewGoalWeightUser.setText("Weight goal:" + value.getPesoObjetivo().toString() + unidadPeso);
                     CharSequence stepsGoal = textViewStepsGoalUser.getText();
-                    textViewStepsGoalUser.setText(stepsGoal + value.getPasosObjetivo().toString());
+                    textViewStepsGoalUser.setText("Step Goal" + value.getPasosObjetivo().toString());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
