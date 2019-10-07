@@ -87,10 +87,14 @@ public class LoginActivity extends AppCompatActivity {
                             usuario.setPeso(0.0);
                             firebaseDatabase.getReference().child(user.getUid()).setValue(usuario);
 
+                            Toast.makeText(LoginActivity.this, "Usuario creado exitosamente",
+                                    Toast.LENGTH_SHORT).show();
+
+
                         } else {
                             //lo que se ejecuta si el metodo falla
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "El usuario no fue creado",
                                     Toast.LENGTH_SHORT).show();
 
                         }
@@ -116,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
 
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "El usuario no pudo ser Logueado",
                                     Toast.LENGTH_SHORT).show();
 
                         }
