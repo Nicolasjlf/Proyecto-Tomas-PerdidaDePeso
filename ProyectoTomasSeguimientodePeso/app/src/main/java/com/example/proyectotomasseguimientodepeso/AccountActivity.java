@@ -37,6 +37,7 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        //encuenta todos los componentes visiules
         botonEditarInformacion = findViewById(R.id.activityAccount_EditInfo);
         textViewMailUser = findViewById(R.id.activityAccount_mailUser);
         textViewNameUser = findViewById(R.id.activityAccount_nombreUser);
@@ -45,6 +46,7 @@ public class AccountActivity extends AppCompatActivity {
         textViewGoalWeightUser = findViewById(R.id.activityAccount_pesoObjetivoUser);
         textViewStepsGoalUser = findViewById(R.id.activityAccount_pasosObjetivoUser);
 
+        // le setea el onclick al boton
         botonEditarInformacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,13 +57,16 @@ public class AccountActivity extends AppCompatActivity {
 
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
+        //encuentra la base de datos
         firebaseDatabase = FirebaseDatabase.getInstance();
+        //agarra la dreferencia de nuesto usuario
         DatabaseReference nameReference = firebaseDatabase.getReference(uid);
 
         nameReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                //parsea el json a algo de tipo usuario y lo carga en los componentees visuales
                 Usuario value = dataSnapshot.getValue(Usuario.class);
                 String valueNombre = value.getNombre();
                 Double valueAltura = value.getAltura();

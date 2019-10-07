@@ -79,6 +79,7 @@ public class PhotosActivity extends AppCompatActivity {
         int mes = calendar.get(Calendar.MONTH);
         int anio = calendar.get(Calendar.YEAR);
 
+        //cuando vuelve el activity result abre el date picker dialog para que el usuario seleccione la fecha
         datePickerDialog = new DatePickerDialog(PhotosActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int unAnio, int unMes, int unDia) {
@@ -91,6 +92,7 @@ public class PhotosActivity extends AppCompatActivity {
     }
 
     private void setearImagenYFecha(Bitmap image, int unDia, int unMes, int unAnio) {
+        // este codigo agarra el intent de la imagen y depndiendo de cual esta vacia la va poniendo
         if (textView1.getText().equals("")) {
             imageView1.setImageBitmap(image);
             textView1.setText(unDia + "/" + unMes + "/" + unAnio);

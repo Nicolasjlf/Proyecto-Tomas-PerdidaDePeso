@@ -68,6 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                //traer el usuario de firebase
                 usuario = dataSnapshot.getValue(Usuario.class);
                 String usuarioNombre = usuario.getNombre();
                 Double usuarioAltura = usuario.getAltura();
@@ -75,6 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Double usuarioPesoObjetivo = usuario.getPesoObjetivo();
                 Integer usuarioPasosObjetivo = usuario.getPasosObjetivo();
 
+                //si el usuario no es null carga todos los atributos en los campos correspondientes
                 if (usuario == null) {
                     seleccionSistemaMetricoSwitch.setChecked(false);
                     seleccionarSistemaInternacional();
@@ -137,6 +139,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    //este metodo carga el usuario en la base de dato de firebase, agarrando el valor de cada campo
     private void setUsuarioFirebase(DatabaseReference databaseReference) {
         String nombreUsuario = nombreEditText.getText().toString();
         this.usuario.setNombre(nombreUsuario);
@@ -162,6 +165,7 @@ public class SettingsActivity extends AppCompatActivity {
         databaseReference.setValue(this.usuario);
     }
 
+    //este metodo cambia el sistema en el que se ve modificando todos los aspectos visuales de manera acorde
     private void seleccionarSistemaInternacional() {
 
         sistemaInternacional = true;
@@ -228,6 +232,7 @@ public class SettingsActivity extends AppCompatActivity {
         textViewSeleccionado.setTypeface(Typeface.DEFAULT);
     }
 
+    //metodos de conversion para pasar de un sistema a otro
     private String convertirAPies(String metros) {
         Double pies = Double.parseDouble(metros) * 3.281;
         return String.format("%.2f", pies);
